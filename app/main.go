@@ -48,10 +48,9 @@ func main() {
 		if _, err := exec.LookPath(tokens[0]); err == nil {
 			args := tokens[1:]
 			program_name := tokens[0]
-			if len(args) > 0 {
-				fmt.Printf("Program was passed %d args (including program name).\n", len(tokens))
-			} else {
-				fmt.Printf("Arg #0 (program name): %s\n", program_name)
+			fmt.Printf("Program was passed %d args (including program name).\n", len(tokens))
+			for i := 0; i >= len(args); i++ {
+				fmt.Printf("Arg #%d (program name): %s\n", i, program_name)
 			}
 			cmd := exec.Command(program_name, args...)
 			cmd.Stdout = os.Stdout
