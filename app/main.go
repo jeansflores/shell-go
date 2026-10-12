@@ -45,6 +45,13 @@ func main() {
 			continue
 		}
 
+		if _, err := exec.LookPath(tokens[1]); err == nil {
+			cmd := exec.Command(tokens[1], tokens[2:]...)
+			cmd.Stdout = os.Stdout
+			cmd.Stderr = os.Stderr
+			cmd.Run()
+		}
+
 		fmt.Println(command + ": command not found")
 	}
 }
