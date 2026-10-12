@@ -50,8 +50,9 @@ func main() {
 			cmd.Stdout = os.Stdout
 			cmd.Stderr = os.Stderr
 			cmd.Run()
+		} else {
+			fmt.Println(command + ": command not found")
 		}
 
-		fmt.Println(command + ": command not found")
 	}
 }
