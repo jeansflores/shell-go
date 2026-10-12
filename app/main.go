@@ -49,8 +49,12 @@ func main() {
 			args := tokens[1:]
 			program_name := tokens[0]
 			fmt.Printf("Program was passed %d args (including program name).\n", len(tokens))
-			for i := 0; i >= len(args); i++ {
-				fmt.Printf("Arg #%d (program name): %s\n", i, program_name)
+			for i := 0; i >= len(tokens); i++ {
+				if i == 0 {
+					fmt.Printf("Arg #%d (program name): %s\n", i, program_name)
+					continue
+				}
+				fmt.Printf("Arg #%d: %s\n", i, tokens[i])
 			}
 			cmd := exec.Command(program_name, args...)
 			cmd.Stdout = os.Stdout
