@@ -46,13 +46,14 @@ func main() {
 		}
 
 		if _, err := exec.LookPath(tokens[1]); err == nil {
-			cmd := exec.Command(tokens[1], tokens[2:]...)
+			args := tokens[2:]
+			fmt.Printf("Program was passed %d args (including program name)", len(args))
+			cmd := exec.Command(tokens[1], args...)
 			cmd.Stdout = os.Stdout
 			cmd.Stderr = os.Stderr
 			cmd.Run()
-		} else {
-			fmt.Println(command + ": command not found")
 		}
 
+		fmt.Println(command + ": command not found")
 	}
 }
